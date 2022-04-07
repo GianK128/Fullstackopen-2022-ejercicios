@@ -1,2 +1,4 @@
-# Fullstackopen-2022-ejercicios
- Mis soluciones a los ejercicios del curso Fullstackopen 2022
+# Soluciones Fullstackopen 2022
+
+Enlace al curso:
+https://fullstackopen.com/es.
