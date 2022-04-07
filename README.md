@@ -5,4 +5,8 @@ https://fullstackopen.com/es.
 
 ## Parte 0 - Fundamentos de las aplicaciones web
 
-Enlace a los ejercicios: https://github.com/GianK128/Fullstackopen-2022-ejercicios/tree/part0/part0
+```
+HTML, CSS, Solicitudes HTTP, Javascript, DOM, AJAX
+```
+
+[Click aquí](./part0/) para ir a las soluciones de los ejercicios
