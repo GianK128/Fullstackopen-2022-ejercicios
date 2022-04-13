@@ -3,13 +3,29 @@ import ReactDOM from 'react-dom/client';
 
 const Title = ({ text }) => <h1>{text}</h1>
 
+const Stat = ({ name, result }) => {
+  return <p>{name}: {result}</p>
+}
+
 const Statistics = ({ stats }) => {
   return (
     <div>
-      {stats.map(stat => {
-        return <p key={stat.name}>{stat.name}: {stat.result}</p>
-      })}
+      {stats.map(stat => 
+        <Stat 
+          key={stat.name} 
+          name={stat.name} 
+          result={stat.result}
+        />
+      )}
     </div>
+  )
+}
+
+const Button = ({ text, handleClick }) => {
+  return (
+    <button onClick={handleClick}>
+      {text}
+    </button>
   )
 }
 
@@ -66,15 +82,9 @@ const App = () => {
     <div>
       <Title text={"Give feedback"} />
       <div>
-        <button onClick={incrementGood()}>
-          Good
-        </button>
-        <button onClick={incrementNeutral()}>
-          Neutral
-        </button>
-        <button onClick={incrementBad()}>
-          Bad
-        </button>
+        <Button text={"Good"} handleClick={incrementGood()} />
+        <Button text={"Neutral"} handleClick={incrementNeutral()} />
+        <Button text={"Bad"} handleClick={incrementBad()} />
       </div>
       <Title text={"Statistics"} />
       {statsReady() ?
