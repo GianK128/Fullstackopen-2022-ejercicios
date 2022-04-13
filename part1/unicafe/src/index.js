@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom/client';
 
 const Title = ({ text }) => <h1>{text}</h1>
 
-const Statistics = ({ title, stats }) => {
-  console.log(stats)
-
+const Statistics = ({ stats }) => {
   return (
     <div>
-      <Title text={title} />
       {stats.map(stat => {
         return <p key={stat.name}>{stat.name}: {stat.result}</p>
       })}
@@ -36,6 +33,10 @@ const App = () => {
   }
   const getPositives = () => {
     return (good / (good + neutral + bad)) * 100
+  }
+
+  const statsReady = () => {
+    return (good !== 0 || bad !== 0 || neutral !== 0)
   }
 
   const stats = [
@@ -75,10 +76,11 @@ const App = () => {
           Bad
         </button>
       </div>
-      <Statistics 
-        title={"Statistics"}
-        stats={stats}
-      />
+      <Title text={"Statistics"} />
+      {statsReady() ?
+        <Statistics stats={stats} /> :
+        <p>No feedback given</p>
+      }
     </div>
   )
 }
