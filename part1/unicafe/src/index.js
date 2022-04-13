@@ -4,20 +4,27 @@ import ReactDOM from 'react-dom/client';
 const Title = ({ text }) => <h1>{text}</h1>
 
 const Stat = ({ name, result }) => {
-  return <p>{name}: {result}</p>
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{result}</td>
+    </tr>
+  )
 }
 
 const Statistics = ({ stats }) => {
   return (
-    <div>
-      {stats.map(stat => 
-        <Stat 
-          key={stat.name} 
-          name={stat.name} 
-          result={stat.result}
-        />
-      )}
-    </div>
+    <table>
+      <tbody>
+        {stats.map(stat =>
+          <Stat
+            key={stat.name}
+            name={stat.name}
+            result={stat.result}
+          />
+        )}
+      </tbody>
+    </table>
   )
 }
 
