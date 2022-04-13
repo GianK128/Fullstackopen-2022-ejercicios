@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 const App = ({ anecdotes }) => {
-  const [selected, useSelected] = useState(0)
+  const [selected, setSelected] = useState(0)
   
+  const handleRandom = () => () => {
+    let randomIndex = ~~(Math.random() * anecdotes.length)
+    setSelected(randomIndex)
+  }
+
   return (
     <div>
-      {anecdotes[selected]}
+      <p>{anecdotes[selected]}</p>
+      <button onClick={handleRandom()}>
+        Next Anecdote
+      </button>
     </div>
   )
 }
