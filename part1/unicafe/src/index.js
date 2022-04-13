@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom/client';
 
 const Title = ({ text }) => <h1>{text}</h1>
 
+const Statistics = ({ title, stats }) => {
+  console.log(stats)
+
+  return (
+    <div>
+      <Title text={title} />
+      {stats.map(stat => {
+        return <p key={stat.name}>{stat.name}: {stat.result}</p>
+      })}
+    </div>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -25,6 +38,29 @@ const App = () => {
     return (good / (good + neutral + bad)) * 100
   }
 
+  const stats = [
+    {
+      name: "Good",
+      result: good
+    },
+    {
+      name: "Neutral",
+      result: neutral
+    },
+    {
+      name: "Bad",
+      result: bad
+    },
+    {
+      name: "Average",
+      result: isNaN(getAverage()) ? 0 : getAverage() 
+    },
+    {
+      name: "Positive",
+      result: `${isNaN(getPositives()) ? 0 : getPositives()}%`
+    },
+  ]
+
   return (
     <div>
       <Title text={"Give feedback"} />
@@ -39,12 +75,10 @@ const App = () => {
           Bad
         </button>
       </div>
-      <Title text={"Statistics"} />
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Average: {isNaN(getAverage()) ? 0 : getAverage() }</p>
-      <p>Positive: {isNaN(getPositives()) ? 0 : getPositives() }%</p>
+      <Statistics 
+        title={"Statistics"}
+        stats={stats}
+      />
     </div>
   )
 }
