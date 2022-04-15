@@ -6,6 +6,7 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('New person...')
   const [newPhone, setNewPhone] = useState('New phone...')
+  const [filter, setFilter] = useState('')
 
   const handleNameSubmit = () => (event) => {
     event.preventDefault()
@@ -14,7 +15,7 @@ const App = () => {
       alert('Please, complete every field before submitting')
       return
     }
-    
+
     const newPerson = {
       name: newName,
       phone: newPhone
@@ -31,9 +32,16 @@ const App = () => {
     setNewPhone('')
   }
 
+  const personsToShow = filter === ''
+    ? persons
+    : persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase()))
+
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+      <label>Filter shown with</label>
+      <input onChange={(e) => setFilter(e.target.value)}/>
+      <h2>Add new contact</h2>
       <form onSubmit={handleNameSubmit()}>
         <label>Name:</label>
         <input 
@@ -48,9 +56,12 @@ const App = () => {
         <button type="submit">Add</button>
       </form>
       <h2>Numbers</h2>
-      {persons.map(person => (
-        <p key={person.name}>{person.name} {person.phone}</p>
-      ))}
+      {personsToShow.length > 0
+        ? personsToShow.map(person => (
+          <p key={person.name}>{person.name} {person.phone}</p>
+        ))
+        : <p>No matches found.</p>
+      }
     </div>
   )
 }
