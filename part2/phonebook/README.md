@@ -21,3 +21,7 @@ Implementar un campo de búsqueda que pueda usarse para filtrar la lista de pers
 ## Ejercicio 2.10
 
 Si ha implementado su aplicación en un solo componente, refactorice extrayendo las partes adecuadas en nuevos componentes. Mantenga el estado de la aplicación y todos los controladores de eventos en el componente raíz de `App`.
+
+## Ejercicio 2.11
+
+Modifique la aplicación de modo que el estado inicial de los datos se obtenga del servidor (`json-server`) mediante la librería `axios`.
