@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import getWeatherData from '../services/getWeatherData'
 
 const Country = ({ data }) => {
+  const [weather, setWeather] = useState({})
+  
+  useEffect(() => {
+    getWeatherData(data.name.common)
+      .then(response => {
+        console.log(response.data.current)
+        setWeather(response.data.current)
+      })
+  },[])
+  
   return (
     <div>
       <h1>{data.name.common}</h1>
@@ -14,6 +25,10 @@ const Country = ({ data }) => {
           <li key={key}>{lang}</li> 
         )}
       </ul>
+      <h2>Weather in {data.capital[0]}</h2>
+      <p>Temperature: {weather.temperature} °C</p>
+      <img src={weather.weather_icons} alt={"Weather icon"}></img>
+      <p>Wind: {weather.wind_speed} mph / direction {weather.wind_dir} {weather.wind_degree}°</p>
     </div>
  )
 }
