@@ -37,7 +37,7 @@ function App() {
       />
       {results.length === 0
         ? <p>Search something to see results.</p>
-        : <SearchResults results={results}/>
+        : <SearchResults results={results} setResults={setResults}/>
       }
     </div>
   );
