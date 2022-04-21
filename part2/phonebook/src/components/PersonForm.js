@@ -26,7 +26,7 @@ const PersonForm = ({ persons, setPersons }) => {
         }
     
         personsService
-          .create(newPerson)
+          .createEntry(newPerson)
           .then(data => {
             setPersons(persons.concat(data))
             setNewName('')
