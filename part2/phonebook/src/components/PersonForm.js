@@ -14,15 +14,27 @@ const PersonForm = ({ persons, setPersons }) => {
           return
         }
     
+        if (persons.some(p => p.name === newName))
+        {
+          if (window.confirm(`${newName} already exists in the phonebook. Replace the old number with the new one?`)) {
+            const personToUpdate = persons.find(p => p.name === newName)
+
+            personsService
+              .updateEntry(personToUpdate.id)
+              .then(data => 
+                setPersons(persons.map(p => 
+                  p.id !== personToUpdate.id 
+                    ? p 
+                    : p.phone = newPhone
+                  )
+                )
+              )
+          }
+        }
+
         const newPerson = {
           name: newName,
           phone: newPhone
-        }
-    
-        if (persons.some(p => p.name === newPerson.name))
-        {
-          alert(`${newName} already exists in the phonebook`)
-          return
         }
     
         personsService
