@@ -18,17 +18,21 @@ const PersonForm = ({ persons, setPersons }) => {
         {
           if (window.confirm(`${newName} already exists in the phonebook. Replace the old number with the new one?`)) {
             const personToUpdate = persons.find(p => p.name === newName)
+            personToUpdate.phone = newPhone
 
             personsService
-              .updateEntry(personToUpdate.id)
-              .then(data => 
-                setPersons(persons.map(p => 
-                  p.id !== personToUpdate.id 
-                    ? p 
-                    : p.phone = newPhone
+              .updateEntry(personToUpdate)
+              .then(data => {
+                  console.log(data)
+                  setPersons(persons.map(p =>  
+                    p.id === personToUpdate.id 
+                      ? personToUpdate
+                      : p
+                    )
                   )
-                )
+                }
               )
+            return
           }
         }
 

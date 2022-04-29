@@ -20,9 +20,9 @@ const deleteEntry = (id) => {
     .then(response => response)
 }
 
-const updateEntry = (id) => {
+const updateEntry = (personToUpdate) => {
   return axios
-    .put(`${baseUrl}/persons/${id}`)
+    .put(`${baseUrl}/persons/${personToUpdate.id}`, personToUpdate)
     .then(response => response.data)
 }
 
