@@ -14,7 +14,15 @@ HTML, CSS, Solicitudes HTTP, Javascript, DOM, AJAX
 ## Parte 1 - Introducción a React
 
 ```
-React, componentes, estados, controladores de eventos
+React, componentes, hooks de estados, controladores de eventos
 ```
 
 [Click aquí](./part1/) para ir a las soluciones de los ejercicios
+
+## Parte 2 - Comunicandose con el servidor
+
+```
+Programación funcional JS (find, map, filter), formularios, componentes controlados, fetch, axios, hooks de efectos. Acercamiento a APIs REST, rutas y tipos de solicitudes HTTP.
+```
+
+[Click aquí](./part2/) para ir a las soluciones de los ejercicios.
