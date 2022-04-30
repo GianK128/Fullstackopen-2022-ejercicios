@@ -41,3 +41,12 @@ Permitir que los usuarios eliminen entradas de la agenda. La eliminación se pue
 ## Ejercicio 2.18
 
 Cambiar la funcionalidad de modo que si se agrega un número a un usuario ya existente, el nuevo número reemplazará al anterior.
+
+## Ejercicio 2.19
+
+Utilizar el ejemplo de mensaje de error mejorado de la parte 2 como guía para mostrar una notificación que dura unos segundos después de que se ejecuta una operación exitosa.
+
+## Ejercicio 2.20
+
+Abra su aplicación en dos navegadores. Si elimina a una persona en el navegador 1 un momento antes de intentar cambiar el número de teléfono de la persona en el navegador 2, obtendrá un mensaje de error.
+Solucione el problema de acuerdo con el ejemplo que se muestra en promesa y errores en la parte 2. Modifique el ejemplo para que se muestre al usuario un mensaje cuando la operación no se realice correctamente. Los mensajes que se muestran para eventos exitosos y no exitosos deben verse diferentes.
