@@ -3,10 +3,12 @@ import Contacts from './Contacts'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import personsService from '../services/personsService'
+import Alert from './Alert'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [filter, setFilter] = useState('')
+  const [error, setError] = useState({message: null, category: null})
 
   useEffect(() => {
     personsService
@@ -20,6 +22,7 @@ const App = () => {
 
   return (
     <div>
+      <Alert message={error.message} category={error.category}/>
       <h1>Phonebook</h1>
       <Filter 
         label={"Filter shown with"}
@@ -29,11 +32,13 @@ const App = () => {
       <PersonForm 
         persons={persons}
         setPersons={setPersons}
+        setError={setError}
       />
       <h2>Numbers</h2>
       <Contacts 
         persons={personsToShow}
         setPersons={setPersons}
+        setError={setError}
       />
     </div>
   )

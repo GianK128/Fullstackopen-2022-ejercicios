@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "./Input";
 import personsService from "../services/personsService";
 
-const PersonForm = ({ persons, setPersons }) => {
+const PersonForm = ({ persons, setPersons , setError}) => {
     const [newName, setNewName] = useState('New person...')
     const [newPhone, setNewPhone] = useState('New phone...')
     
@@ -32,6 +32,18 @@ const PersonForm = ({ persons, setPersons }) => {
                   )
                 }
               )
+              .catch(error => {
+                console.log(error)
+                setError({
+                  message: 'Esta persona ya no existe en la base de datos.',
+                  category: 'danger'
+                })
+                setTimeout(() => {
+                  setError(prevError => {
+                    return {...prevError, message: null}
+                  })
+                }, 5000)
+              })
             return
           }
         }
@@ -47,6 +59,15 @@ const PersonForm = ({ persons, setPersons }) => {
             setPersons(persons.concat(data))
             setNewName('')
             setNewPhone('')
+            setError({
+              message: `${newName} fue agregado correctamente.`,
+              category: 'success'
+            })
+            setTimeout(() => {
+              setError(prevError => {
+                return {...prevError, message: null}
+              })
+            }, 5000)
           })
       }
 

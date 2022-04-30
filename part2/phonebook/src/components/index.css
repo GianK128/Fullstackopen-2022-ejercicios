@@ -1,0 +1,13 @@
+.alert-danger {
+    padding: 0.5em;
+    border-radius: 0.25em;
+    background-color: rgb(230, 140, 140);
+    border: 1px solid rgb(110, 20, 20);
+}
+
+.alert-success {
+    padding: 0.5em;
+    border-radius: 0.25em;
+    background-color: rgb(171, 240, 162);
+    border: 1px solid rgb(32, 138, 32);
+}
